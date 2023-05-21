@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="layout::head">
+<meta charset="UTF-8">
+</head>
+<body>
+<nav th:insert="layout::menu"></nav>
+<button type="button" class="btn btn-primary">
+Agregar Sala</button>
+<hr />
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Código</th>
+      <th scope="col">Descripción</th>
+      <th scope="col">Nro.Asientos</th>
+      <th scope="col">Estado</th>
+      <th scope="col">Actualizar</th>
+      <th scope="col">Eliminar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="sala :${listasalas}">
+      <td th:text="${sala.idsala}"></td>
+      <td th:text="${sala.descsala}"></td>
+      <td th:text="${sala.asientos}"></td>
+      <td th:text="${sala.estado.descestado}"></td>
+      <td>
+      	<button type="button" class="btn btn-info">
+      	<i class="far fa-pencil"></i></button>      	
+      </td>
+      <td>
+      	<button type="button" class="btn btn-danger">
+      	<i class="fas fa-trash"></i></button>      	      
+      </td>
+    </tr>    
+  </tbody>
+</table>
+</body>
+</html>
