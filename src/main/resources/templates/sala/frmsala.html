@@ -27,8 +27,12 @@
 				<td th:text="${sala.asientos}"></td>
 				<td th:text="${sala.estado.descestado}"></td>
 				<td>
-					<button type="button" class="btn btn-info">
-						<i class="far fa-pencil"></i>
+					<button type="button" class="btn btn-success btnactualizar"
+						th:data-idsala="${sala.idsala}"
+						th:data-descsala="${sala.descsala}"
+						th:data-asientos="${sala.asientos}"
+						th:data-idestado="${sala.estado.idestado}">
+						<i class="fas fa-pen"></i>
 					</button>
 				</td>
 				<td>
@@ -47,7 +51,7 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<h1 class="modal-title fs-5" id="exampleModalLabel">Modal
-						title</h1>
+						Mantenimiento de Sala</h1>
 					<button type="button" class="btn-close" data-bs-dismiss="modal"
 						aria-label="Close"></button>
 				</div>
@@ -70,6 +74,7 @@
 						<select class="form-control"
 							id="cboestado"></select>						
 					</div>
+					<input type="hidden" id="hddidregistrosala">
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
