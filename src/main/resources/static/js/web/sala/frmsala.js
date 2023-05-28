@@ -61,12 +61,44 @@ $(document).on("click", "#btnguardar", function(){
 		}),
 		success: function(resultado){
 			alert(resultado.mensaje);
+			ListarSala();
 		}
 	});
 	$("#modalSala").modal("hide");
 })
 
 
+function ListarSala(){
+	$.ajax({
+		type: "GET",
+		url: "/sala/listarSalas",
+		dataType: "json",
+		success: function(resultado){
+			//console.log(resultado);
+			$("#tblsala > tbody").html("");
+			$.each(resultado, function(index, value){
+				$("#tblsala > tbody").append("<tr>"+
+						"<td>"+value.idsala+"</td>"+
+						"<td>"+value.descsala+"</td>"+
+						"<td>"+value.asientos+"</td>"+
+						"<td>"+value.estado.descestado+"</td>"+
+						"<td>"+
+							"<button type='button' class='btn btn-success btnactualizar'"+
+							" data-idsala='"+value.idsala+"'"+
+							" data-descsala='"+value.descsala+"'"+
+							" data-asientos='"+value.asientos+"'"+
+							" data-idestado='"+value.estado.idestado+"'"+
+							"><i class='fas fa-pen'></i></button></td>"+
+						"<td>"+
+							"<button type='button' class='btn btn-danger'"+							
+							"><i class='fas fa-trash'></i></button></td>"							
+						"</tr>")
+			})
+			
+			
+		}
+	})
+}
 
 
 
