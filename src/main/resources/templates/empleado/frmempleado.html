@@ -23,7 +23,7 @@
 				<td th:text="${empleado.idempleado}"></td>
 				<td th:text="${empleado.nombre}"></td>
 				<td th:text="${empleado.apellido}"></td>
-				<td th:text="${empleado.fechacontrat}"></td>				
+				<td th:text="${#dates.format(empleado.fechacontrat, 'dd-MM-yyyy')}"></td>				
 			</tr>
 		</tbody>
 	</table>
@@ -33,31 +33,28 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h1 class="modal-title fs-5" id="exampleModalLabel">Modal
+					<h1 class="modal-title fs-5" id="exampleModalLabel">
 						Registro de Empleado</h1>
 					<button type="button" class="btn-close" data-bs-dismiss="modal"
 						aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
 					<div class="mb-3">
-						<label for="txtdescripcion" class="form-label">
-							Descripción</label> 
+						<label for="txtnombre" class="form-label">
+							Nombres</label> 
 						<input type="text" class="form-control"
-							id="txtdescripcion" >
+							id="txtnombre" >
+						<span id="errornombre" class="text-danger">
+						</span>
 					</div>
 					<div class="mb-3">
-						<label for="txtnroasientos" class="form-label">
-							Nro. Asientos</label> 
+						<label for="txtapellido" class="form-label">
+							Apellidos</label> 
 						<input type="text" class="form-control"
-							id="txtnroasientos" >
+							id="txtapellido" >
+						<span id="errorapellido" class="text-danger">
+						</span>
 					</div>
-					<div class="mb-3">
-						<label for="cboestado" class="form-label">
-							Estado</label> 
-						<select class="form-control"
-							id="cboestado"></select>						
-					</div>
-					<input type="hidden" id="hddidregistrosala">
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
