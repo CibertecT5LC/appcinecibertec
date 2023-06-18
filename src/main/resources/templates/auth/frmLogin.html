@@ -23,7 +23,10 @@
 						type="password" class="form-control" id="txtpassword"
 						name="txtpassword">
 				</div>
-				<button type="button" class="btn btn-primary">INGRESAR</button>
+				<div th:if="${param.error}" class="alert alert-danger" role="alert">
+				  Usuario o Password incorrecto.
+				</div>				
+				<button type="submit" class="btn btn-primary">INGRESAR</button>
 				<a th:href="@{/auth/registrar}" class="btn btn-primary">REGISTRARSE</a>
 
 
