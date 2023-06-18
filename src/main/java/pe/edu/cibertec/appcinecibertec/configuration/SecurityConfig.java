@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import lombok.RequiredArgsConstructor;
 import pe.edu.cibertec.appcinecibertec.service.UsuarioDetalleService;
@@ -43,6 +44,12 @@ public class SecurityConfig {
 			.passwordParameter("txtpassword")
 			.defaultSuccessUrl("/home")
 			.failureUrl("/auth/login?error=true")
+			.and()
+			.logout()
+			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+			.logoutSuccessUrl("/auth/login").and()
+			.exceptionHandling()
+			.accessDeniedPage("/access-denied")
 			.and()
 			.authenticationProvider(
 					authenticationProvider());

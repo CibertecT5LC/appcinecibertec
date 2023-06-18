@@ -3,6 +3,7 @@ package pe.edu.cibertec.appcinecibertec.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,9 +24,11 @@ import pe.edu.cibertec.appcinecibertec.service.EmpleadoService;
 public class EmpleadoController {
 	
 	@Autowired
+	
 	private EmpleadoService empleadoService;
 
 	@GetMapping("/frmempleado")
+	//@PreAuthorize(value = "ADMIN")
 	public String frmMantEmpleado(Model model) {
 		model.addAttribute("listaempleados", 
 				empleadoService.listarEmpleados());
